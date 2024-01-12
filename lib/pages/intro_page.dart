@@ -22,7 +22,7 @@ class IntroPage extends StatelessWidget {
 
         // We deliver groceries at your doorstep
         Padding(
-          padding: EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(24.0),
           child: Text(
             "We deliver groceries at your doorstep",
             textAlign: TextAlign.center,
