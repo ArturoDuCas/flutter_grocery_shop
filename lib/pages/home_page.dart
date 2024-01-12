@@ -4,6 +4,7 @@ import "package:google_fonts/google_fonts.dart";
 import "package:provider/provider.dart";
 
 import "../model/cart_model.dart";
+import "../pages/cart_page.dart";
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,6 +13,17 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () =>
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return CartPage();
+          })),
+          backgroundColor: Colors.black,
+          child: const Icon(
+            Icons.shopping_bag,
+            color: Colors.white,
+          ),
+        ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -75,6 +87,10 @@ class HomePage extends StatelessWidget {
                         itemPrice: value.shopItems[index][1],
                         imagePath: value.shopItems[index][2],
                         color: value.shopItems[index][3],
+                        onPressed: () {
+                          Provider.of<CartModel>(context, listen: false)
+                              .addItemToCart(index);
+                        },
                       );
                     },
                   );
